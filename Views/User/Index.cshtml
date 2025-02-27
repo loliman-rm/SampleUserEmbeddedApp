@@ -1,0 +1,70 @@
+﻿@model SampleWebApplication.Controllers.UserInfo
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Info</title>
+    <style>
+        .container {
+            width: 100%;
+            max-width: 400px;
+            margin: auto;
+            text-align: center;
+        }
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 10px;
+        }
+        .search-box {
+            margin-bottom: 10px;
+        }
+        .search-box input {
+            width: 80%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .search-box button {
+            padding: 8px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+    <script>
+        function searchUser() {
+            let query = document.getElementById("searchInput").value;
+            window.location.href = '?search=' + encodeURIComponent(query);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Enter username..." />
+            <button onclick="searchUser()">Search</button>
+        </div>
+
+        @if (Model != null)
+        {
+            <div class="card">
+                <h2>@Model.FirstName @Model.LastName</h2>
+                <p><strong>ID:</strong> @Model.UserID</p>
+                <p><strong>Username:</strong> @Model.Username</p>
+                <p><strong>Email:</strong> @Model.Email</p>
+                <p><strong>Cost Center:</strong> @Model.CostCenter</p>
+                <p><strong>Organization:</strong> @Model.Organization</p>
+            </div>
+        }
+        else
+        {
+            <p>No user found.</p>
+        }
+    </div>
+</body>
+</html>
