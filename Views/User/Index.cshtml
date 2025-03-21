@@ -1,4 +1,4 @@
-﻿@model SampleWebApplication.Controllers.UserInfo
+﻿@model SampleUserEmbeddedApp.Models.UserInfo
 
 <!DOCTYPE html>
 <html>
@@ -36,11 +36,28 @@
             border-radius: 5px;
         }
     </style>
+
+    <script src="~/js/iframe-messenger.js"></script>
     <script>
         function searchUser() {
             let query = document.getElementById("searchInput").value;
             window.location.href = '?search=' + encodeURIComponent(query);
         }
+
+        // IFrameMessenger(targetWindow, targetOrigin)
+        var allowedOrigin = '@Model.AllowedOrigin';
+        const messenger = new IFrameMessenger(window.parent, allowedOrigin);
+
+        // Function to handle data recieved from parent
+        messenger.onData((data) => {
+            console.log("Received data from parent:");
+            console.log(JSON.parse(data));
+            messenger.stopListening();
+        });
+
+        // Start listening and notify the parent it's ready
+        messenger.startAndSignalReady();
+
     </script>
 </head>
 <body>

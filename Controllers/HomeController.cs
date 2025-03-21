@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using SampleWebApplication.Models;
+using SampleUserEmbeddedApp.Models;
 using System.Diagnostics;
 
-namespace SampleWebApplication.Controllers
+namespace SampleUserEmbeddedApp.Controllers
 {
     public class HomeController : Controller
     {

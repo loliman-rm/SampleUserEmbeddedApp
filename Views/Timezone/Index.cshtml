@@ -1,0 +1,35 @@
+﻿@model SampleUserEmbeddedApp.Controllers.TimezoneInfo
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Timezone Info</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="mb-4">Timezone Information</h2>
+        <table class="table table-bordered">
+            <tr>
+                <th>Abbreviation</th>
+                <td>@Model.Abbreviation</td>
+            </tr>
+            <tr>
+                <th>DST Abbreviation</th>
+                <td>@Model.DstAbbreviation</td>
+            </tr>
+            <tr>
+                <th>Time Zone</th>
+                <td>@Model.TimeZone</td>
+            </tr>
+            <tr>
+                <th>DST Name</th>
+                <td>@Model.TzDSTName</td>
+            </tr>
+            <tr>
+                <th>Time Zone Name</th>
+                <td>@Model.TzName</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

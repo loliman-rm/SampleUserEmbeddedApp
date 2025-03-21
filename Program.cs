@@ -1,3 +1,5 @@
+using SampleUserEmbeddedApp.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
@@ -11,6 +13,11 @@ builder.Services.AddSession(options =>
     options.Cookie.SameSite = SameSiteMode.None; // Allow cross-site iframes
     options.Cookie.SecurePolicy = CookieSecurePolicy.Always; // Required for SameSite=None
 });
+
+// Add services to the container.
+builder.Services.Configure<AppSettings>
+    (builder.Configuration.GetSection("AppSettings"));
+builder.Services.AddTransient<UserInfo>();
 
 var app = builder.Build();
 
@@ -38,5 +45,9 @@ app.Use(async (context, next) =>
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=User}/{action=Index}/{search?}");
+
+app.MapControllerRoute(
+    name: "Timezone",
+    pattern: "{controller=Timezone}/{action=Index}/");
 
 app.Run();

@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace SampleWebApplication.Views.User
+namespace SampleUserEmbeddedApp.Views.User
 {
     public class IndexModel : PageModel
     {
